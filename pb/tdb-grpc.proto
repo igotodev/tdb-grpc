@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package tdb;
+
+option go_package = "pb/";
+
+service NotesService {
+  rpc CreateNotes(CreateNoteRequest) returns (CreateNoteResponse);
+}
+
+message Note {
+  string Id = 1;
+  string Title = 2;
+  string Note = 3;
+  string Time = 4;
+}
+
+message CreateNoteRequest {
+  Note note = 1;
+}
+
+message CreateNoteResponse {
+  Note note = 1;
+}
+
+
