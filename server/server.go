@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -33,7 +34,7 @@ type noteItem struct {
 	Time  string             `bson:"time"`
 }
 
-func (*server) CreateNotes(ctx context.Context, req *pb.CreateNoteRequest) (*pb.CreateNoteResponse, error) {
+func (*server) CreateNote(ctx context.Context, req *pb.CreateNoteRequest) (*pb.CreateNoteResponse, error) {
 	log.Printf("starting to create a blog...")
 	noteReq := req.GetNote()
 	note := noteItem{
@@ -55,6 +56,33 @@ func (*server) CreateNotes(ctx context.Context, req *pb.CreateNoteRequest) (*pb.
 		Title: note.Title,
 		Note:  note.Note,
 		Time:  note.Time,
+	}}
+	return resp, nil
+}
+
+func (*server) ReadNote(ctx context.Context, req *pb.ReadNoteRequest) (*pb.ReadNoteResponse, error) {
+	noteID := req.GetNoteId()
+	log.Printf("starting to read a blog with id=%s", noteID)
+	// convert string ID to object ID
+	oid, err := primitive.ObjectIDFromHex(noteID)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, fmt.Sprintf("error while convert ID: %v", err))
+	}
+	// argument to Decode must be a pointer or a map!!!
+	note := &noteItem{}
+
+	// set filter
+	filter := bson.M{"_id":oid}
+	result := collection.FindOne(ctx, filter)
+	if err := result.Decode(note); err != nil {
+		return nil, status.Errorf(codes.NotFound, fmt.Sprintf("error while get result: %v", err))
+	}
+	log.Printf("sending a response to client is done!")
+	resp := &pb.ReadNoteResponse{Note: &pb.Note{
+		Id: note.ID.Hex(),
+		Title: note.Title,
+		Note: note.Note,
+		Time: note.Time,
 	}}
 	return resp, nil
 }
