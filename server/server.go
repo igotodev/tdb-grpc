@@ -89,6 +89,8 @@ func (*server) ReadNote(ctx context.Context, req *pb.ReadNoteRequest) (*pb.ReadN
 
 func (*server) UpdateNote(ctx context.Context, req *pb.UpdateNoteRequest) (*pb.UpdateNoteResponse, error) {
 	newNote := req.GetNote()
+	log.Printf("starting to update a blog with id=%s", newNote.GetId())
+
 	// convert string ID to object ID
 	oid, err := primitive.ObjectIDFromHex(newNote.GetId())
 	if err != nil {
@@ -108,7 +110,7 @@ func (*server) UpdateNote(ctx context.Context, req *pb.UpdateNoteRequest) (*pb.U
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, fmt.Sprintf("error while updating the note: %v", err))
 	}
-
+	log.Print("updating a blog is done!")
 	resp := &pb.UpdateNoteResponse{Note: &pb.Note{
 		Id:    oid.Hex(),
 		Title: note.Title,
@@ -120,6 +122,7 @@ func (*server) UpdateNote(ctx context.Context, req *pb.UpdateNoteRequest) (*pb.U
 
 func (*server) DeleteNote(ctx context.Context, req *pb.DeleteNoteRequest) (*pb.DeleteNoteResponse, error) {
 	noteID := req.GetNoteId()
+	log.Printf("starting to delete a blog with id=%s", noteID)
 	oid, err := primitive.ObjectIDFromHex(noteID)
 	if err != nil {
 		return &pb.DeleteNoteResponse{Done: false}, status.Errorf(codes.InvalidArgument, fmt.Sprintf("error while convert ID: %v", err))
@@ -133,7 +136,7 @@ func (*server) DeleteNote(ctx context.Context, req *pb.DeleteNoteRequest) (*pb.D
 		return &pb.DeleteNoteResponse{Done: false},
 		status.Errorf(codes.NotFound, fmt.Sprintf("error while deleting the note: %v", err))
 	}
-	//
+	log.Print("deleting a blog is done!")
 	return &pb.DeleteNoteResponse{Done: true}, err
 }
 
