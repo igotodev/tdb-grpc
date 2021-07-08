@@ -72,33 +72,73 @@ func (*server) ReadNote(ctx context.Context, req *pb.ReadNoteRequest) (*pb.ReadN
 	note := &noteItem{}
 
 	// set filter
-	filter := bson.M{"_id":oid}
+	filter := bson.M{"_id": oid}
 	result := collection.FindOne(ctx, filter)
 	if err := result.Decode(note); err != nil {
 		return nil, status.Errorf(codes.NotFound, fmt.Sprintf("error while get result: %v", err))
 	}
 	log.Printf("sending a response to client is done!")
 	resp := &pb.ReadNoteResponse{Note: &pb.Note{
-		Id: note.ID.Hex(),
+		Id:    note.ID.Hex(),
 		Title: note.Title,
-		Note: note.Note,
-		Time: note.Time,
+		Note:  note.Note,
+		Time:  note.Time,
 	}}
 	return resp, nil
 }
 
-func main() {
-	log.Printf("the server is running...")
-	// init mongoDB
-	log.Printf("connecting to mongodb...")
-	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
-	defer cancel()
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+func (*server) UpdateNote(ctx context.Context, req *pb.UpdateNoteRequest) (*pb.UpdateNoteResponse, error) {
+	newNote := req.GetNote()
+	// convert string ID to object ID
+	oid, err := primitive.ObjectIDFromHex(newNote.GetId())
 	if err != nil {
-		log.Fatalf("error while connect to mongodb : %v", err)
+		return nil, status.Errorf(codes.InvalidArgument, fmt.Sprintf("error while convert ID: %v", err))
 	}
-	collection = client.Database("mynotesdb").Collection("notes")
-	log.Printf("connection to mongodb is complete!")
+
+	// argument to Decode must be a pointer or a map!!!
+	note := &noteItem{
+		Title: newNote.GetTitle(),
+		Note: newNote.GetNote(),
+		Time: time.Now().Format("2006/01/02 15:04:05"),
+	}
+
+	// set filter
+	filter := bson.M{"_id": oid}
+	_, err = collection.ReplaceOne(ctx, filter, note)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, fmt.Sprintf("error while updating the note: %v", err))
+	}
+
+	resp := &pb.UpdateNoteResponse{Note: &pb.Note{
+		Id:    oid.Hex(),
+		Title: note.Title,
+		Note:  note.Note,
+		Time:  note.Time,
+	}}
+	return resp, nil
+}
+
+func (*server) DeleteNote(ctx context.Context, req *pb.DeleteNoteRequest) (*pb.DeleteNoteResponse, error) {
+	noteID := req.GetNoteId()
+	oid, err := primitive.ObjectIDFromHex(noteID)
+	if err != nil {
+		return &pb.DeleteNoteResponse{Done: false}, status.Errorf(codes.InvalidArgument, fmt.Sprintf("error while convert ID: %v", err))
+	}
+
+	// set filter
+	filter := bson.M{"_id":oid}
+	_, err = collection.DeleteOne(ctx, filter)
+	if err != nil {
+
+		return &pb.DeleteNoteResponse{Done: false},
+		status.Errorf(codes.NotFound, fmt.Sprintf("error while deleting the note: %v", err))
+	}
+	//
+	return &pb.DeleteNoteResponse{Done: true}, err
+}
+
+func startGRPC() {
+	log.Printf("the server is running...")
 
 	lis, err := net.Listen("tcp", address)
 	if err != nil {
@@ -136,6 +176,21 @@ func main() {
 
 	log.Printf("stopping server...")
 	s.Stop()
+}
+
+func main() {
+	// init mongoDB
+	log.Printf("connecting to mongodb...")
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	defer cancel()
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	if err != nil {
+		log.Fatalf("error while connect to mongodb : %v", err)
+	}
+	collection = client.Database("mynotesdb").Collection("notes")
+	log.Printf("connection to mongodb is complete!")
+	// start server
+	startGRPC()
 	log.Print("closing mongodb connection...")
 	if err = client.Disconnect(ctx); err != nil {
 		log.Fatalf("error on disconnection with mongodb : %v", err)

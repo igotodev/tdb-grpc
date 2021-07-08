@@ -283,6 +283,194 @@ func (x *ReadNoteResponse) GetNote() *Note {
 	return nil
 }
 
+type UpdateNoteRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Note *Note `protobuf:"bytes,1,opt,name=note,proto3" json:"note,omitempty"`
+}
+
+func (x *UpdateNoteRequest) Reset() {
+	*x = UpdateNoteRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pb_tdb_grpc_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateNoteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNoteRequest) ProtoMessage() {}
+
+func (x *UpdateNoteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pb_tdb_grpc_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNoteRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNoteRequest) Descriptor() ([]byte, []int) {
+	return file_pb_tdb_grpc_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateNoteRequest) GetNote() *Note {
+	if x != nil {
+		return x.Note
+	}
+	return nil
+}
+
+type UpdateNoteResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Note *Note `protobuf:"bytes,1,opt,name=note,proto3" json:"note,omitempty"`
+}
+
+func (x *UpdateNoteResponse) Reset() {
+	*x = UpdateNoteResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pb_tdb_grpc_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateNoteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNoteResponse) ProtoMessage() {}
+
+func (x *UpdateNoteResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pb_tdb_grpc_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNoteResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNoteResponse) Descriptor() ([]byte, []int) {
+	return file_pb_tdb_grpc_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateNoteResponse) GetNote() *Note {
+	if x != nil {
+		return x.Note
+	}
+	return nil
+}
+
+type DeleteNoteRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	NoteId string `protobuf:"bytes,1,opt,name=note_id,json=noteId,proto3" json:"note_id,omitempty"`
+}
+
+func (x *DeleteNoteRequest) Reset() {
+	*x = DeleteNoteRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pb_tdb_grpc_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteNoteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNoteRequest) ProtoMessage() {}
+
+func (x *DeleteNoteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pb_tdb_grpc_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNoteRequest.ProtoReflect.Descriptor instead.
+func (*DeleteNoteRequest) Descriptor() ([]byte, []int) {
+	return file_pb_tdb_grpc_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DeleteNoteRequest) GetNoteId() string {
+	if x != nil {
+		return x.NoteId
+	}
+	return ""
+}
+
+type DeleteNoteResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Done bool `protobuf:"varint,1,opt,name=done,proto3" json:"done,omitempty"`
+}
+
+func (x *DeleteNoteResponse) Reset() {
+	*x = DeleteNoteResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pb_tdb_grpc_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteNoteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteNoteResponse) ProtoMessage() {}
+
+func (x *DeleteNoteResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pb_tdb_grpc_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteNoteResponse.ProtoReflect.Descriptor instead.
+func (*DeleteNoteResponse) Descriptor() ([]byte, []int) {
+	return file_pb_tdb_grpc_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteNoteResponse) GetDone() bool {
+	if x != nil {
+		return x.Done
+	}
+	return false
+}
+
 var File_pb_tdb_grpc_proto protoreflect.FileDescriptor
 
 var file_pb_tdb_grpc_proto_rawDesc = []byte{
@@ -305,16 +493,36 @@ var file_pb_tdb_grpc_proto_rawDesc = []byte{
 	0x65, 0x49, 0x64, 0x22, 0x31, 0x0a, 0x10, 0x52, 0x65, 0x61, 0x64, 0x4e, 0x6f, 0x74, 0x65, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x4e, 0x6f, 0x74, 0x65,
-	0x52, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x32, 0x86, 0x01, 0x0a, 0x0c, 0x4e, 0x6f, 0x74, 0x65, 0x73,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x4e, 0x6f, 0x74, 0x65, 0x12, 0x16, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e,
-	0x74, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x52, 0x65, 0x61, 0x64, 0x4e, 0x6f,
-	0x74, 0x65, 0x12, 0x14, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x4e, 0x6f, 0x74,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x52,
-	0x65, 0x61, 0x64, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
-	0x05, 0x5a, 0x03, 0x70, 0x62, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x22, 0x32, 0x0a, 0x11, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x04, 0x6e,
+	0x6f, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09, 0x2e, 0x74, 0x64, 0x62, 0x2e,
+	0x4e, 0x6f, 0x74, 0x65, 0x52, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x22, 0x33, 0x0a, 0x12, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x1d, 0x0a, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x09,
+	0x2e, 0x74, 0x64, 0x62, 0x2e, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x04, 0x6e, 0x6f, 0x74, 0x65, 0x22,
+	0x2c, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x6e, 0x6f, 0x74, 0x65, 0x5f, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x6e, 0x6f, 0x74, 0x65, 0x49, 0x64, 0x22, 0x28, 0x0a,
+	0x12, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x6f, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x04, 0x64, 0x6f, 0x6e, 0x65, 0x32, 0x84, 0x02, 0x0a, 0x0c, 0x4e, 0x6f, 0x74, 0x65,
+	0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x12, 0x16, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17,
+	0x2e, 0x74, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x52, 0x65, 0x61, 0x64, 0x4e,
+	0x6f, 0x74, 0x65, 0x12, 0x14, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x4e, 0x6f,
+	0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x74, 0x64, 0x62, 0x2e,
+	0x52, 0x65, 0x61, 0x64, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x3d, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x12, 0x16,
+	0x2e, 0x74, 0x64, 0x62, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x3d, 0x0a, 0x0a, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x12, 0x16, 0x2e,
+	0x74, 0x64, 0x62, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x74, 0x64, 0x62, 0x2e, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x4e, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x05,
+	0x5a, 0x03, 0x70, 0x62, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -329,27 +537,37 @@ func file_pb_tdb_grpc_proto_rawDescGZIP() []byte {
 	return file_pb_tdb_grpc_proto_rawDescData
 }
 
-var file_pb_tdb_grpc_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_pb_tdb_grpc_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_pb_tdb_grpc_proto_goTypes = []interface{}{
 	(*Note)(nil),               // 0: tdb.Note
 	(*CreateNoteRequest)(nil),  // 1: tdb.CreateNoteRequest
 	(*CreateNoteResponse)(nil), // 2: tdb.CreateNoteResponse
 	(*ReadNoteRequest)(nil),    // 3: tdb.ReadNoteRequest
 	(*ReadNoteResponse)(nil),   // 4: tdb.ReadNoteResponse
+	(*UpdateNoteRequest)(nil),  // 5: tdb.UpdateNoteRequest
+	(*UpdateNoteResponse)(nil), // 6: tdb.UpdateNoteResponse
+	(*DeleteNoteRequest)(nil),  // 7: tdb.DeleteNoteRequest
+	(*DeleteNoteResponse)(nil), // 8: tdb.DeleteNoteResponse
 }
 var file_pb_tdb_grpc_proto_depIdxs = []int32{
 	0, // 0: tdb.CreateNoteRequest.note:type_name -> tdb.Note
 	0, // 1: tdb.CreateNoteResponse.note:type_name -> tdb.Note
 	0, // 2: tdb.ReadNoteResponse.note:type_name -> tdb.Note
-	1, // 3: tdb.NotesService.CreateNote:input_type -> tdb.CreateNoteRequest
-	3, // 4: tdb.NotesService.ReadNote:input_type -> tdb.ReadNoteRequest
-	2, // 5: tdb.NotesService.CreateNote:output_type -> tdb.CreateNoteResponse
-	4, // 6: tdb.NotesService.ReadNote:output_type -> tdb.ReadNoteResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0, // 3: tdb.UpdateNoteRequest.note:type_name -> tdb.Note
+	0, // 4: tdb.UpdateNoteResponse.note:type_name -> tdb.Note
+	1, // 5: tdb.NotesService.CreateNote:input_type -> tdb.CreateNoteRequest
+	3, // 6: tdb.NotesService.ReadNote:input_type -> tdb.ReadNoteRequest
+	5, // 7: tdb.NotesService.UpdateNote:input_type -> tdb.UpdateNoteRequest
+	7, // 8: tdb.NotesService.DeleteNote:input_type -> tdb.DeleteNoteRequest
+	2, // 9: tdb.NotesService.CreateNote:output_type -> tdb.CreateNoteResponse
+	4, // 10: tdb.NotesService.ReadNote:output_type -> tdb.ReadNoteResponse
+	6, // 11: tdb.NotesService.UpdateNote:output_type -> tdb.UpdateNoteResponse
+	8, // 12: tdb.NotesService.DeleteNote:output_type -> tdb.DeleteNoteResponse
+	9, // [9:13] is the sub-list for method output_type
+	5, // [5:9] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_pb_tdb_grpc_proto_init() }
@@ -418,6 +636,54 @@ func file_pb_tdb_grpc_proto_init() {
 				return nil
 			}
 		}
+		file_pb_tdb_grpc_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateNoteRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pb_tdb_grpc_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateNoteResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pb_tdb_grpc_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteNoteRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pb_tdb_grpc_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteNoteResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -425,7 +691,7 @@ func file_pb_tdb_grpc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pb_tdb_grpc_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -453,6 +719,8 @@ const _ = grpc.SupportPackageIsVersion6
 type NotesServiceClient interface {
 	CreateNote(ctx context.Context, in *CreateNoteRequest, opts ...grpc.CallOption) (*CreateNoteResponse, error)
 	ReadNote(ctx context.Context, in *ReadNoteRequest, opts ...grpc.CallOption) (*ReadNoteResponse, error)
+	UpdateNote(ctx context.Context, in *UpdateNoteRequest, opts ...grpc.CallOption) (*UpdateNoteResponse, error)
+	DeleteNote(ctx context.Context, in *DeleteNoteRequest, opts ...grpc.CallOption) (*DeleteNoteResponse, error)
 }
 
 type notesServiceClient struct {
@@ -481,10 +749,30 @@ func (c *notesServiceClient) ReadNote(ctx context.Context, in *ReadNoteRequest, 
 	return out, nil
 }
 
+func (c *notesServiceClient) UpdateNote(ctx context.Context, in *UpdateNoteRequest, opts ...grpc.CallOption) (*UpdateNoteResponse, error) {
+	out := new(UpdateNoteResponse)
+	err := c.cc.Invoke(ctx, "/tdb.NotesService/UpdateNote", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notesServiceClient) DeleteNote(ctx context.Context, in *DeleteNoteRequest, opts ...grpc.CallOption) (*DeleteNoteResponse, error) {
+	out := new(DeleteNoteResponse)
+	err := c.cc.Invoke(ctx, "/tdb.NotesService/DeleteNote", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // NotesServiceServer is the server API for NotesService service.
 type NotesServiceServer interface {
 	CreateNote(context.Context, *CreateNoteRequest) (*CreateNoteResponse, error)
 	ReadNote(context.Context, *ReadNoteRequest) (*ReadNoteResponse, error)
+	UpdateNote(context.Context, *UpdateNoteRequest) (*UpdateNoteResponse, error)
+	DeleteNote(context.Context, *DeleteNoteRequest) (*DeleteNoteResponse, error)
 }
 
 // UnimplementedNotesServiceServer can be embedded to have forward compatible implementations.
@@ -496,6 +784,12 @@ func (*UnimplementedNotesServiceServer) CreateNote(context.Context, *CreateNoteR
 }
 func (*UnimplementedNotesServiceServer) ReadNote(context.Context, *ReadNoteRequest) (*ReadNoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadNote not implemented")
+}
+func (*UnimplementedNotesServiceServer) UpdateNote(context.Context, *UpdateNoteRequest) (*UpdateNoteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNote not implemented")
+}
+func (*UnimplementedNotesServiceServer) DeleteNote(context.Context, *DeleteNoteRequest) (*DeleteNoteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNote not implemented")
 }
 
 func RegisterNotesServiceServer(s *grpc.Server, srv NotesServiceServer) {
@@ -538,6 +832,42 @@ func _NotesService_ReadNote_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NotesService_UpdateNote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNoteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotesServiceServer).UpdateNote(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tdb.NotesService/UpdateNote",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotesServiceServer).UpdateNote(ctx, req.(*UpdateNoteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NotesService_DeleteNote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteNoteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotesServiceServer).DeleteNote(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tdb.NotesService/DeleteNote",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotesServiceServer).DeleteNote(ctx, req.(*DeleteNoteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _NotesService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tdb.NotesService",
 	HandlerType: (*NotesServiceServer)(nil),
@@ -549,6 +879,14 @@ var _NotesService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReadNote",
 			Handler:    _NotesService_ReadNote_Handler,
+		},
+		{
+			MethodName: "UpdateNote",
+			Handler:    _NotesService_UpdateNote_Handler,
+		},
+		{
+			MethodName: "DeleteNote",
+			Handler:    _NotesService_DeleteNote_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

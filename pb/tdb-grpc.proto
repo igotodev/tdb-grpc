@@ -4,9 +4,12 @@ package tdb;
 
 option go_package = "pb/";
 
+// CRUD unary service
 service NotesService {
   rpc CreateNote(CreateNoteRequest) returns (CreateNoteResponse);
   rpc ReadNote(ReadNoteRequest) returns (ReadNoteResponse);
+  rpc UpdateNote(UpdateNoteRequest) returns (UpdateNoteResponse);
+  rpc DeleteNote(DeleteNoteRequest) returns (DeleteNoteResponse);
 }
 
 message Note {
@@ -30,6 +33,22 @@ message ReadNoteRequest {
 
 message ReadNoteResponse {
   Note note = 1;
+}
+
+message UpdateNoteRequest {
+  Note note = 1;
+}
+
+message UpdateNoteResponse {
+  Note note = 1;
+}
+
+message DeleteNoteRequest {
+  string note_id = 1;
+}
+
+message DeleteNoteResponse {
+  bool done = 1;
 }
 
 
