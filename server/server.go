@@ -25,7 +25,9 @@ const (
 
 var collection *mongo.Collection
 
-type server struct{}
+type server struct{
+	pb.UnimplementedNotesServiceServer
+}
 
 type noteItem struct {
 	ID    primitive.ObjectID `bson:"_id,omitempty"`

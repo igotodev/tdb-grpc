@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tdb;
 
-option go_package = "pb/";
+option go_package = "./pb";
 
 // CRUD unary service
 service NotesService {
